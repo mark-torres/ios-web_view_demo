@@ -8,20 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		A9EBFFDD1F27A66C00175E86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EBFFDC1F27A66C00175E86 /* AppDelegate.swift */; };
-		A9EBFFDF1F27A66C00175E86 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EBFFDE1F27A66C00175E86 /* ViewController.swift */; };
 		A9EBFFE21F27A66C00175E86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9EBFFE01F27A66C00175E86 /* Main.storyboard */; };
 		A9EBFFE41F27A66C00175E86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9EBFFE31F27A66C00175E86 /* Assets.xcassets */; };
 		A9EBFFE71F27A66C00175E86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9EBFFE51F27A66C00175E86 /* LaunchScreen.storyboard */; };
+		A9EBFFEF1F27BDD400175E86 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EBFFEE1F27BDD400175E86 /* HomeViewController.swift */; };
+		A9EBFFF11F27E73500175E86 /* BasicWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EBFFF01F27E73500175E86 /* BasicWebViewController.swift */; };
+		A9EBFFF31F27E74C00175E86 /* AdvancedWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EBFFF21F27E74C00175E86 /* AdvancedWebViewController.swift */; };
+		A9EBFFF51F27EC7100175E86 /* UIVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EBFFF41F27EC7100175E86 /* UIVCExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A9EBFFD91F27A66C00175E86 /* Web View Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Web View Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9EBFFDC1F27A66C00175E86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A9EBFFDE1F27A66C00175E86 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A9EBFFE11F27A66C00175E86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A9EBFFE31F27A66C00175E86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A9EBFFE61F27A66C00175E86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A9EBFFE81F27A66C00175E86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9EBFFEE1F27BDD400175E86 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A9EBFFF01F27E73500175E86 /* BasicWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicWebViewController.swift; sourceTree = "<group>"; };
+		A9EBFFF21F27E74C00175E86 /* AdvancedWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedWebViewController.swift; sourceTree = "<group>"; };
+		A9EBFFF41F27EC7100175E86 /* UIVCExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIVCExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,11 +61,14 @@
 			isa = PBXGroup;
 			children = (
 				A9EBFFDC1F27A66C00175E86 /* AppDelegate.swift */,
-				A9EBFFDE1F27A66C00175E86 /* ViewController.swift */,
+				A9EBFFEE1F27BDD400175E86 /* HomeViewController.swift */,
 				A9EBFFE01F27A66C00175E86 /* Main.storyboard */,
 				A9EBFFE31F27A66C00175E86 /* Assets.xcassets */,
 				A9EBFFE51F27A66C00175E86 /* LaunchScreen.storyboard */,
 				A9EBFFE81F27A66C00175E86 /* Info.plist */,
+				A9EBFFF01F27E73500175E86 /* BasicWebViewController.swift */,
+				A9EBFFF21F27E74C00175E86 /* AdvancedWebViewController.swift */,
+				A9EBFFF41F27EC7100175E86 /* UIVCExtension.swift */,
 			);
 			path = "Web View Demo";
 			sourceTree = "<group>";
@@ -137,8 +146,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9EBFFDF1F27A66C00175E86 /* ViewController.swift in Sources */,
 				A9EBFFDD1F27A66C00175E86 /* AppDelegate.swift in Sources */,
+				A9EBFFF31F27E74C00175E86 /* AdvancedWebViewController.swift in Sources */,
+				A9EBFFF51F27EC7100175E86 /* UIVCExtension.swift in Sources */,
+				A9EBFFEF1F27BDD400175E86 /* HomeViewController.swift in Sources */,
+				A9EBFFF11F27E73500175E86 /* BasicWebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +277,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = VPJJQVPPXZ;
 				INFOPLIST_FILE = "Web View Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hsoft-mobile.Web-View-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -278,6 +291,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = VPJJQVPPXZ;
 				INFOPLIST_FILE = "Web View Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hsoft-mobile.Web-View-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
