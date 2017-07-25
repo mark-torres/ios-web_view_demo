@@ -17,4 +17,7 @@ extension UIViewController {
 		present(alert, animated: true, completion: nil)
 	}
 	
+	func runningOnTablet() -> Bool {
+		return (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad)
+	}
 }
