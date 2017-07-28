@@ -189,15 +189,22 @@ class AdvancedWebViewController: UIViewController, UITextFieldDelegate, WKScript
 	// https://useyourloaf.com/blog/querying-url-schemes-with-canopenurl/
 	func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
 		let requestedUrl = navigationAction.request.url!
-		// mailto, tel, sms
-		if ["mailto", "tel", "sms"].contains(requestedUrl.scheme ?? "") {
-			if UIApplication.shared.canOpenURL(requestedUrl) {
+		guard UIApplication.shared.canOpenURL(requestedUrl) else {
+			showAlert(withMessage: "Unable to open requested URL.", andTitle: "Error")
+			decisionHandler(WKNavigationActionPolicy.cancel)
+			return
+		}
+		// schemes must be whitelisted in Info.plist in LSApplicationQueriesSchemes array
+		let scheme = requestedUrl.scheme ?? ""
+		switch scheme {
+			// mailto, tel, sms
+			case "mailto", "tel", "sms":
 				UIApplication.shared.openURL(requestedUrl)
 				decisionHandler(WKNavigationActionPolicy.cancel)
-				return
-			}
+				break
+			default:
+				decisionHandler(WKNavigationActionPolicy.allow)
 		}
-		decisionHandler(WKNavigationActionPolicy.allow)
 	}
 	
 	// MARK: - IB Actions

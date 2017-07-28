@@ -78,6 +78,22 @@ class BasicWebViewController: UIViewController, UITextFieldDelegate, UIWebViewDe
 		uiWebView.loadRequest(userRequest)
 	}
 	
+	func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+		let requestedUrl = request.url!
+		let scheme = requestedUrl.scheme ?? ""
+		// schemes must be whitelisted in Info.plist in LSApplicationQueriesSchemes array
+		if scheme == "message" {
+			let queryData = decodeHttpQuery(fromString: requestedUrl.query ?? "")
+			print(queryData)
+			let message = queryData["text"] ?? ""
+			if !message.isEmpty {
+				showAlert(withMessage: message, andTitle: "Message from UIWebView")
+			}
+			return false
+		}
+		return true
+	}
+	
 	func webViewDidStartLoad(_ webView: UIWebView) {
 		showLoader()
 		btnStop.isEnabled = true
