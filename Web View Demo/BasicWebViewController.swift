@@ -134,6 +134,10 @@ class BasicWebViewController: UIViewController, UITextFieldDelegate, UIWebViewDe
 		let actionGoogle = UIAlertAction(title: "Go to Google", style: .default) { (action) in
 			self.loadUrl(fromString: "http://google.com")
 		}
+		let actionJs = UIAlertAction(title: "Run JS code", style: .default) { (action) in
+			self.uiWebView.stringByEvaluatingJavaScript(from: "document.bgColor = '#F0F8FF';")
+		}
+		actionSheet.addAction(actionJs)
 		actionSheet.addAction(actionGoogle)
 		actionSheet.addAction(actionClose)
 		//

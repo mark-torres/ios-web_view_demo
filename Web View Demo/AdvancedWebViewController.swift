@@ -109,6 +109,12 @@ class AdvancedWebViewController: UIViewController, UITextFieldDelegate, WKScript
 	}
 	
 	func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+		// https://developer.apple.com/documentation/webkit/wkscriptmessage
+		if let messageBody = message.body as? [String: Any] {
+			if let textMessage = messageBody["text"] as? String {
+				showAlert(withMessage: textMessage, andTitle: "Message from JavaScript")
+			}
+		}
 	}
 	
 	func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
@@ -178,6 +184,22 @@ class AdvancedWebViewController: UIViewController, UITextFieldDelegate, WKScript
 		btnStop.isEnabled = false
 	}
 	
+	// handle mailto and sms schemes
+	// https://stackoverflow.com/questions/26501172/launching-phone-email-map-links-in-wkwebview
+	// https://useyourloaf.com/blog/querying-url-schemes-with-canopenurl/
+	func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+		let requestedUrl = navigationAction.request.url!
+		// mailto, tel, sms
+		if ["mailto", "tel", "sms"].contains(requestedUrl.scheme ?? "") {
+			if UIApplication.shared.canOpenURL(requestedUrl) {
+				UIApplication.shared.openURL(requestedUrl)
+				decisionHandler(WKNavigationActionPolicy.cancel)
+				return
+			}
+		}
+		decisionHandler(WKNavigationActionPolicy.allow)
+	}
+	
 	// MARK: - IB Actions
 	
 	@IBAction func tapBackwd(_ sender: Any) {
@@ -201,6 +223,10 @@ class AdvancedWebViewController: UIViewController, UITextFieldDelegate, WKScript
 		let actionGoogle = UIAlertAction(title: "Go to Google", style: .default) { (action) in
 			self.loadUrl(fromString: "http://google.com")
 		}
+		let actionJs = UIAlertAction(title: "Run JS code", style: .default) { (action) in
+			self.wkWebView.evaluateJavaScript("document.bgColor = '#F0F8FF';", completionHandler: nil)
+		}
+		actionSheet.addAction(actionJs)
 		actionSheet.addAction(actionGoogle)
 		actionSheet.addAction(actionClose)
 		//
